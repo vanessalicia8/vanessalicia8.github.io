@@ -1,6 +1,4 @@
 
-title: "Sensor Possibilities"
-layout: page
-filename: about.md
+## Sensor Possibilities
 
 This is the about-me page!
