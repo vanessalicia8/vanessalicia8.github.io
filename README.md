@@ -7,7 +7,7 @@ The topic I will be talking about is color recognition from images for use in fa
 Putting together coordinating outfits for various occasions or everyday wear can be challenging for people who are blind, colorblind, or visually imapired. They can overcome these challenges with the help from friends and family members, or by having descriptive Braille labels stitched onto clothing items. However, attaching labels to every clothing item is a lot of work and would require help from others, and people might not always be around to give suggestions. With the help of computer vision and a mobile device, this project aims to provide a quicker and easier solution to describe outfit colors and make recommendations.  
 
 ## Sensor Possibilities? 
-
+Go to [about page](about.md)
 ## Apparel Classification & Recognition
 
 ## Successes and Failures
