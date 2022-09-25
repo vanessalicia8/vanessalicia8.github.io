@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <link rel="stylesheet" href="p1.css">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+      <meta charset="UTF-8">
+      <title>Computer Vision for Fashion Matching</title>
+   <style> body,h1,h2,h4 {font-family: "Raleway", Arial, sans-serif}
+   h2,h4 {letter-spacing: 6px}
+   .w3-row-padding img {margin-bottom: 12px}
+   </style>
+   </head>
+
+
+   <body>
+      <header class="w3-panel w3-center" style="padding:32px 16px">
+         <nav>
+            <ul>
+               <li><a href="index.html" >Home</a></li>
+               <li><a href="problem.html">Problem</a></li>
+               <li><a href="sensors.html">Sensors</a></li>
+               <li class="active"><a href="patterns.html">Pattern Recognition</a></li>
+               <li><a href="succfail.html">Successes & Failures</a></li>
+               <li><a href="challenges.html">Challenges</a></li>
+               <li><a href="conclusion.html">Future & Conclusion</a></li>
+               <li><a href="quiz.html">Quiz</a></li>
+               <li><a href="references.html">References</a></li>
+            </ul>
+         </nav>
+      </header>
+      <main>
+         <h2>Pattern Recognition</h2><br>
+<h4>Model 1:</h4>
+         <div style = "width: 700px; margin: auto; align-self: center;">
+            <p style = "text-align: left; font-size: 18px">A first approach works by extracting both global (RadonSig) and local features (SIFT) of clothing images, as well as “statistics of wavelet sub-bands (STA)” in order to evaluate the complementary relationships between the different feature channels <a href="references.html">[1]</a>. These extracted features are combined to recognize clothing patterns through a method of supervised learning known as support vector machines (SVM) classifier. This system is then evaluated on a dataset of image patterns, categorized as either plaid, striped, patternless, horizontal/vertical, and irregular <a href="references.html">[2]</a>. From the database, a training set is selected as a fixed-size random subset of each category, while the remaining images are used as the testing set. With this combination, a 92.55% recognition accuracy was achieved.</p>
+
+<p style = "text-align: left; font-size: 18px">Additionally, clothing color recognition is implemented by quantizing the normalized color histogram of each clothing image in the HSI (hue, saturation, and intensity) color space. More specifically, “for each clothing image, [this] color identification method quantizes the pixels in the image to the following 11 colors: red, orange, yellow, green, cyan, blue, purple, pink, black, grey, and white” <a href="references.html">[1]</a>. In cases where multiple colors are present, it will output only the dominant colors, which are described as filling more than 5% of the entire image. Both “the clothing patterns and colors mutually provide complementary information, the recognized patterns provide additional information about how different colors are arranged” <a href="references.html">[1]</a>.
+</p>
+
+<p>
+<img src = "image/dataset_tests.png" alt = "Results after train and test" style = "width:310px; height:160px">
+<img src = "image/patterns.png" alt = "Pattern and color output" style = "width:310px; height:160px">
+</p>
+<p style = "font-color:light-gray; font-size: 10px">Source: https://ieeexplore-ieee-org.proxylib.csueastbay.edu/document/6739993</p><br>
+<h4>Model 2:</h4>
+            <p style = "text-align: left; font-size: 18px">A second approach classifies clothing items and can identify a variety of attributes, such as type, pattern, and texture. This system enhances FashionNet, “a deep model that learns clothing characteristics by predicting garment qualities and categories together” <a href="references.html">[3]</a>. FashionNet uses a convolutional deep net, capable of performing multi-class, multi-label classification, in which each clothing article can have one or more clothing attributes attached to it <a href="references.html">[4]</a>. In order to improve accuracy, the VGG16 design (a convolutional neural network that is sixteen layers deep) which was originally used in FashionNet was replaced by ResNet34 architecture (a thirty-four layer convolutional neural network for image classification). In training, the Deep Fashion dataset was used due to its diversity in clothing categories and descriptive attributes <a href="references.html">[3]</a>. During evaluation, it was shown that the performance of this model outperformed the rest in terms of accuracy (see below). </p>
+<p>
+<img src = "image/accuracy_results.png" alt = "Evaluation after train" style = "width:300px; height:320px">
+<img src = "image/fashion_classify.png" alt = "clothing attributes classification" style = "width:300px; height:320px">
+</p>
+<p style = "font-color:light-gray; font-size: 10px">Source: https://ieeexplore-ieee-org.proxylib.csueastbay.edu/document/9820475</p><br>
+
+
+         </div>
+      </main>
+      <footer style = "margin-bottom: 50px">
+         <a href="problem.html" class="w3-bar-item w3-button w3-white"><< Prev</a>
+         <a href="succfail.html" class="w3-bar-item w3-button w3-white">Next >></a>
+      </footer>
+   </body>
+</html>
