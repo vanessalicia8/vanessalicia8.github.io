@@ -11,7 +11,11 @@
    .w3-row-padding img {margin-bottom: 12px}
    </style>
    </head>
-
+<script>
+function revealAnswers() {
+  document.getElementById("answer").innerHTML = "1: A<br>2: SIFT, RadonSig, STA<br>3: ResNet, AlexNet<br>4: T<br>5: Deep learning is a type of AI that imitates the way humans gain certain types of knowledge. Supervised learning is a subcategory of machine learning and AI which is defined by its use of labeled datasets to train algorithms that to classify data or predict outcomes accurately.";
+}
+</script>
 
    <body>
       <header class="w3-panel w3-center" style="padding:32px 16px">
@@ -33,10 +37,47 @@
          <h2>Quiz</h2>
 <br>
 <h4>Question 1:</h4>
-         <div style = "width: 700px; margin: auto; align-self: center;">
-            <p style = "text-align: left; font-size: 18px">Put stuff here.</p>
+         <div style = "width: 700px; margin: auto; align-self: left;">
+            <p style = "text-align: left; font-size: 18px">
+1. What is a convolutional neural network (CNN)?<br>
+            <ul style = "list-style-type: none; text-align: left;">
+               <li>A)A type of AI that allows software applications to become more accurate at predicting outcomes without being explicitly programmed to do so.</li>
+               <li>B)​​A class of artificial neural networks, most commonly applied to analyze visual imagery.</li>
+               <li>C)​​A type of artificial intelligence that imitates the way humans gain certain types of knowledge.</li>
+               <li>D)​​A method that infers a function from labeled training data consisting of a set of training examples.</li>
+            </ul>
+            </p>
+
+            <p style = "text-align: left; font-size: 18px">
+2. Which of the following are deep features mentioned (can have multiple answers)?<br>
+            <ul style = "list-style-type: none; text-align: left;">
+               <li>A)SIFT</li>
+               <li>B)​​FTA</li>
+               <li>C)​​RadonSig</li>
+               <li>D)​​STA</li>
+            </ul>
+            </p>
+
+            <p style = "text-align: left; font-size: 18px">
+3. Which of the following are pre-trained CNN’s (can have multiple answers)?<br>
+            <ul style = "list-style-type: none; text-align: left;">
+               <li>A)ResNet</li>
+               <li>B)​​DeepFashion</li>
+               <li>C)​​AlexNet</li>
+               <li>D)​​CCNY</li>
+            </ul>
+            </p>
+
+            <p style = "text-align: left; font-size: 18px">
+4. T/F: Can image noise be caused by low lighting?<br>
+            </p>
+            <p style = "text-align: left; font-size: 18px">
+5. What is the difference between deep learning and supervised learning?<br>
+            </p>
 
 
+            <button type="button" onclick="revealAnswers()">Answers</button>
+            <p id = "answer" style = "text-align: left; font-size: 18px"></p>
          </div>
       </main>
       <footer style = "margin-bottom: 50px">

@@ -1,5 +1,5 @@
 # Computer Vision for Fashion Matching  
-Vanessa Loepz  
+Vanessa Lopez  
 
 https://vanessalicia8.github.io/
 
