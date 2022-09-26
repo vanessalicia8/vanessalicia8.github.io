@@ -33,35 +33,81 @@
          <h2>Pattern Recognition</h2><br>
 <h4>Model 1:</h4>
          <div style = "width: 700px; margin: auto; align-self: center;">
-            <p style = "text-align: left; font-size: 18px">A first approach works by extracting both global (RadonSig) and local features (SIFT) of clothing images, as well as “statistics of wavelet sub-bands (STA)” in order to evaluate the complementary relationships between the different feature channels <a href="references.html">[1]</a>. These extracted features are combined to recognize clothing patterns through a method of supervised learning known as support vector machines (SVM) classifier. This system is then evaluated on a dataset of image patterns, categorized as either plaid, striped, patternless, horizontal/vertical, and irregular <a href="references.html">[2]</a>. From the database, a training set is selected as a fixed-size random subset of each category, while the remaining images are used as the testing set. With this combination, a 92.55% recognition accuracy was achieved.</p>
-
-<p style = "text-align: left; font-size: 18px">Additionally, clothing color recognition is implemented by quantizing the normalized color histogram of each clothing image in the HSI (hue, saturation, and intensity) color space. More specifically, “for each clothing image, [this] color identification method quantizes the pixels in the image to the following 11 colors: red, orange, yellow, green, cyan, blue, purple, pink, black, grey, and white” <a href="references.html">[1]</a>. In cases where multiple colors are present, it will output only the dominant colors, which are described as filling more than 5% of the entire image. Both “the clothing patterns and colors mutually provide complementary information, the recognized patterns provide additional information about how different colors are arranged” <a href="references.html">[1]</a>.
-</p>
-
+            <p style = "text-align: left; font-size: 18px">In one approach, pattern recognition works by a method of extracting both global (RadonSig) and local features (SIFT) of clothing images, as well as “statistics of wavelet subbands (STA)” in order to evaluate the complementary relationships between the different feature channels <a href="references.html">[1]</a>.  Local features can be used to recognize patterns that use repetitive primitives, such as plaid and stripes. However, because there can be variations within these categories (e.g. true plaid vs. argyle vs. gingham), global features are also extracted, which provide complementary information to the local features, such as directionality and other statistical information from the pattern. </p>
 <p>
-<img src = "image/dataset_tests.png" alt = "Results after train and test" style = "width:310px; height:160px">
-<img src = "image/patterns.png" alt = "Pattern and color output" style = "width:310px; height:160px">
+<img src = "image/STA.png" alt = "STA feature extraction" style = "width:250px; height:240px">
+<img src = "image/local_features.png" alt = "Local feature extraction" style = "width:350px; height:240px">
 </p>
 <p style = "font-color:light-gray; font-size: 10px">Source: https://ieeexplore-ieee-org.proxylib.csueastbay.edu/document/6739993</p><br>
-<h4>Model 2:</h4>
-            <p style = "text-align: left; font-size: 18px">A second approach classifies clothing items and can identify a variety of attributes, such as type, pattern, and texture. This system enhances FashionNet, “a deep model that learns clothing characteristics by predicting garment qualities and categories together” <a href="references.html">[3]</a>. FashionNet uses a convolutional deep net, capable of performing multi-class, multi-label classification, in which each clothing article can have one or more clothing attributes attached to it <a href="references.html">[4]</a>. In order to improve accuracy, the VGG16 design (a convolutional neural network that is sixteen layers deep) which was originally used in FashionNet was replaced by ResNet34 architecture (a thirty-four layer convolutional neural network for image classification). In training, the Deep Fashion dataset was used due to its diversity in clothing categories and descriptive attributes <a href="references.html">[3]</a>. During evaluation, it was shown that the performance of this model outperformed the rest in terms of accuracy, with Top-3 and Top-5 referring to whether the top three or five highest probability answers match the expected answer. </p>
+
+
+            <p style = "text-align: left; font-size: 18px">These extracted feature channels are concatenated, and the combined vector is used as input into the support vector machines (SVM) classifier, which is a method of supervised learning <a href="references.html">[2]</a>. This system is then trained and evaluated on a CCNY Clothing Pattern dataset, with categories such as plaid, striped, patternless, and irregular. Below are the results of comparison in recognition accuracy between different feature channels under different volumes of training sets. The method described achieved the highest accuracy percentage of 92.55% with a training volume of 70%. The confusion matrix is also shown.</p>
 <p>
-<img src = "image/accuracy_results.png" alt = "Evaluation after train" style = "width:300px; height:320px">
-<img src = "image/fashion_classify.png" alt = "clothing attributes classification" style = "width:300px; height:320px">
-</p>
-<p style = "font-color:light-gray; font-size: 10px">Source: https://ieeexplore-ieee-org.proxylib.csueastbay.edu/document/9820475</p>
+<img src = "image/train_accuracy.png" alt = "Recognition accuracy evaluation" style = "width:310px; height:160px">
+<img src = "image/train_accuracy_graph.png" alt = "Recognition accuracy graph" style = "width:310px; height:160px">
 <br>
-<h4>Model 3:</h4>
-<p style = "text-align: left; font-size: 18px">Another model also uses pre-trained convolutional neural networks to classify apparel. This method of “using a pre-trained CNN model for either fine-tuning a CNN model with a new task or using the layers activations of pre-trained CNN model for potential feature extraction” is known as transfer learning [5]. The CNNs used include AlexNet, VGGNet, and ResNet, which were trained on the ACS fashion dataset. This dataset was constructed from the ImageNet dataset, contains nearly 90,000 images, and covers fifteen different clothing types including dresses, sweaters, undergarments, and uniforms. About 80% of these images were assigned to the training set while the other 20% were assigned to the test set. Deep features were extracted, “fc6 and fc7 activations were used for AlexNet and VGGNet models and fc1000 activation layer was used for ResNet model” [5]. Each deep feature vector was evaluated and the proposed model achieved the highest accuracy percentage, as shown below.
+<img style="padding:16px 16px" src = "image/confusion_table.png" alt = "Confusion table of patterns" >
+</p>
+<p style = "font-color:light-gray; font-size: 10px">Source: https://ieeexplore-ieee-org.proxylib.csueastbay.edu/document/6739993</p><br>
+
+
+<p style = "text-align: left; font-size: 18px">Clothing color identification is implemented by quantizing the normalized color histogram of each clothing image in the HSI (hue, saturation, and intensity) color space. In other words, for each clothing image, this method “quantizes the pixels in the image to the following 11 colors: red, orange, yellow, green, cyan, blue, purple, pink, black, grey, and white” <a href="references.html">[1]</a>. White, black, and gray are detected by observing the relationship between saturation and intensity values, while hue values, ranging from 0 to 360, are quantized for the rest of the colors. In cases where multiple colors are present, the system will output only the dominant colors, whose pixels fill more than 5% of the image. 
 </p>
 
-<img src = "image/vector_accuracy.png" alt = "Accuracy of different vectors" style = "width:300px; height:300px">
+<p style = "text-align: left; font-size: 18px">Both the clothing pattern and color recognition results “mutually provide a more precise and meaningful description of clothes to users” [1]. Below are results combining the pattern recognized along with the dominant colors.
+</p>
+
+<p>
+<img src = "image/patterns.png" alt = "Pattern and color output" style="padding:8px 16px">
+</p>
+<p style = "font-color:light-gray; font-size: 10px">Source: https://ieeexplore-ieee-org.proxylib.csueastbay.edu/document/6739993</p><br>
+
+
+<h4>Model 2:</h4>
+            <p style = "text-align: left; font-size: 18px">A second approach classifies clothing items and can identify a variety of attributes, such as type, pattern, and texture. This system enhances FashionNet, “a deep model that learns clothing characteristics by predicting garment qualities and categories together” <a href="references.html">[3]</a>. FashionNet uses a convolutional deep net, capable of performing multi-class, multi-label classification, in which each clothing article can have one or more clothing attributes attached to it <a href="references.html">[4]</a>. In order to improve accuracy, the VGG16 design (a convolutional neural network that is sixteen layers deep) which was originally used in FashionNet was replaced by ResNet34 architecture (a thirty-four layer convolutional neural network for image classification). Below are code snippets from the original FashionNet VGG16 convolutional neural network design and results after testing an image.</p>
+
+<p>
+<img src = "image/VGG16.png" alt = "VGG16 layers" style = "width:310px; height:350px">
+<img src = "image/VGG16_prediction.png" alt = "Attribute results" style = "width:310px; height:350px">
+</p>
+<p style = "font-color:light-gray; font-size: 10px">https://github.com/PlabanM1/FashionNet/blob/master/FashionNet.ipynb</p><br>
+
+
+<p style = "text-align: left; font-size: 18px">In training the ResNet34 model, the Deep Fashion dataset was used due to its diversity in clothing categories and descriptive attributes. Although “the pre-trained model‘s layers recognize fundamental visual concepts that do not require much training,” it was found that “combining small learning rates for the first layers with big learning rates for the last ones to allow them to fine-tune more quickly” <a href="references.html">[3]</a>. The network was shown to perform better as training continued, as long as a significant drop in the validation set loss was not experienced. During evaluation, it was shown that this model outperformed others in terms of clothing type classification accuracy, where Top-3 and Top-5 refer to whether the top three or five highest probability answers match the expected answer.</p>
+<p>
+<img src = "image/accuracy_results.png" alt = "Evaluation after train" style = "width:300px; height:330px">
+</p>
+<p style = "font-color:light-gray; font-size: 10px">Source: https://ieeexplore-ieee-org.proxylib.csueastbay.edu/document/9820475</p>
+
+<p style = "text-align: left; font-size: 18px">Because the Deep Fashion dataset had over 1000 different clothing attributes, the issue of noisy labels arose. Some categories were combined and label smoothing was implemented. The ResNet34 model was once again used, and upon training, an accuracy multi-score of about 97.88% was achieved <a href="references.html">[3]</a>. This was tested with a small sample dataset and was shown to accurately recognize various attributes.</p>
+<p>
+<img src = "image/training_acc2.png" alt = "Training results" style = "width:340px; height:330px">
+<img src = "image/fashion_classify.png" alt = "clothing attributes classification" style = "width:290px; height:330px">
+</p>
+<p style = "font-color:light-gray; font-size: 10px">Source: https://ieeexplore-ieee-org.proxylib.csueastbay.edu/document/9820475</p>
+
+
+<br>
+<h4>Model 3:</h4>
+<p style = "text-align: left; font-size: 18px">Another model also uses pre-trained convolutional neural networks to classify apparel. This method of “using a pre-trained CNN model for either fine-tuning a CNN model with a new task or using the layers activations of pre-trained CNN model for potential feature extraction” is known as transfer learning <a href="references.html">[5]</a>. The CNNs used include AlexNet, VGGNet, and ResNet, which were trained on the ACS fashion dataset. This dataset was constructed from the ImageNet dataset, contains nearly 90,000 images, and covers fifteen different clothing types including dresses, sweaters, undergarments, and uniforms. 
+</p>
+
+<p>
+<img src = "image/categories.png" alt = "Evaluation after train" style = "width:500px; height:330px">
+</p>
+<p style = "font-color:light-gray; font-size: 10px">Source: https://ieeexplore-ieee-org.proxylib.csueastbay.edu/document/8875916</p>
+<br>
+
+<p style = "text-align: left; font-size: 18px">About 80% of these images were assigned to the training set while the other 20% were assigned to the test set. Deep features were extracted, “fc6 and fc7 activations were used for AlexNet and VGGNet models and fc1000 activation layer was used for ResNet model” <a href="references.html">[5]</a>. Each deep feature vector was evaluated and the proposed model achieved the highest accuracy percentage, as shown below.
+</p>
+
+<img src = "image/vector_accuracy.png" alt = "Accuracy of different vectors" style = "width:350px; height:300px">
 </p>
 <p style = "font-color:light-gray; font-size: 10px">Source: https://ieeexplore-ieee-org.proxylib.csueastbay.edu/document/8875916</p>
 <br>
 
 <p style = "text-align: left; font-size: 18px">
-The most accurate model for style and pattern recognition was the second, which uses a pre-trained ResNet34 CNN architecture and enhances FashionNet. This method would likely outperform the third model’s proposed method in terms of accuracy when evaluated under the same circumstances. It also contains more descriptive attributes than both of the other methods.</p>
+The most accurate model for style and pattern recognition was the second, which uses a pre-trained Resnet34 CNN architecture and enhances FashionNet. This method would likely outperform the third model’s proposed method in terms of accuracy when evaluated under the same circumstances. It also contains more descriptive attributes and clothing categories than either of the two methods.</p>
 
          </div>
       </main>
