@@ -76,13 +76,14 @@
 <p style = "text-align: left; font-size: 18px">In training the ResNet34 model, the Deep Fashion dataset was used due to its diversity in clothing categories and descriptive attributes. Although “the pre-trained model‘s layers recognize fundamental visual concepts that do not require much training,” it was found that “combining small learning rates for the first layers with big learning rates for the last ones to allow them to fine-tune more quickly” <a href="references.html">[3]</a>. The network was shown to perform better as training continued, as long as a significant drop in the validation set loss was not experienced. During evaluation, it was shown that this model outperformed others in terms of clothing type classification accuracy, where Top-3 and Top-5 refer to whether the top three or five highest probability answers match the expected answer.</p>
 <p>
 <img src = "image/accuracy_results.png" alt = "Evaluation after train" style = "width:300px; height:330px">
+<img src = "image/fashion_classify.png" alt = "Clothing type classification" style = "width:300px; height:330px">
 </p>
 <p style = "font-color:light-gray; font-size: 10px">Source: https://ieeexplore-ieee-org.proxylib.csueastbay.edu/document/9820475</p>
 
-<p style = "text-align: left; font-size: 18px">Because the Deep Fashion dataset had over 1000 different clothing attributes, the issue of noisy labels arose. Some categories were combined and label smoothing was implemented. The ResNet34 model was once again used, and upon training, an accuracy multi-score of about 97.88% was achieved <a href="references.html">[3]</a>. This was tested with a small sample dataset and was shown to accurately recognize various attributes.</p>
+<p style = "text-align: left; font-size: 18px">Because the Deep Fashion dataset had over 1000 different clothing attributes, the issue of noisy labels arose. Some attribute categories were combined and some were removed in order to reduce it to 57 common attributes. Label smoothing was also implemented. The ResNet34 model was once again used, and upon training, an accuracy multi-score of about 97.88% was achieved <a href="references.html">[3]</a>. This was tested with a small sample dataset and was shown to accurately recognize various attributes.</p>
 <p>
 <img src = "image/training_acc2.png" alt = "Training results" style = "width:340px; height:330px">
-<img src = "image/fashion_classify.png" alt = "clothing attributes classification" style = "width:290px; height:330px">
+<img src = "image/fashion_attributes.png" alt = "clothing attributes classification" style = "width:290px; height:330px">
 </p>
 <p style = "font-color:light-gray; font-size: 10px">Source: https://ieeexplore-ieee-org.proxylib.csueastbay.edu/document/9820475</p>
 
