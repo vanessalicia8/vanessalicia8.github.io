@@ -32,6 +32,7 @@
       <main>
          <h2>Pattern Recognition</h2><br>
 <h4>Model 1:</h4>
+         <audio src="audio/a4.m4a" type="audio/x-m4a" controls autoplay></audio>
          <div style = "width: 700px; margin: auto; align-self: center;">
             <p style = "text-align: left; font-size: 18px">In one approach, pattern recognition works by a method of extracting both global (RadonSig) and local features (SIFT) of clothing images, as well as “statistics of wavelet subbands (STA)” in order to evaluate the complementary relationships between the different feature channels <a href="references.html">[1]</a>.  Local features can be used to recognize patterns that use repetitive primitives, such as plaid and stripes. However, because there can be variations within these categories (e.g. true plaid vs. argyle vs. gingham), global features are also extracted, which provide complementary information to the local features, such as directionality and other statistical information from the pattern. </p>
 <p>
@@ -64,6 +65,7 @@
 
 
 <h4>Model 2:</h4>
+         <audio src="audio/a5.m4a" type="audio/x-m4a" controls autoplay></audio>
             <p style = "text-align: left; font-size: 18px">A second approach classifies clothing items and can identify a variety of attributes, such as type, pattern, and texture. This system enhances FashionNet, “a deep model that learns clothing characteristics by predicting garment qualities and categories together” <a href="references.html">[3]</a>. FashionNet uses a convolutional deep net, capable of performing multi-class, multi-label classification, in which each clothing article can have one or more clothing attributes attached to it <a href="references.html">[4]</a>. In order to improve accuracy, the VGG16 design (a convolutional neural network that is sixteen layers deep) which was originally used in FashionNet was replaced by ResNet34 architecture (a thirty-four layer convolutional neural network for image classification). Below are code snippets from the original FashionNet VGG16 convolutional neural network design and results after testing an image.</p>
 
 <p>
@@ -90,7 +92,8 @@
 
 <br>
 <h4>Model 3:</h4>
-<p style = "text-align: left; font-size: 18px">Another model also uses pre-trained convolutional neural networks to classify apparel. This method of “using a pre-trained CNN model for either fine-tuning a CNN model with a new task or using the layers activations of pre-trained CNN model for potential feature extraction” is known as transfer learning <a href="references.html">[5]</a>. The CNNs used include AlexNet, VGGNet, and ResNet, which were trained on the ACS fashion dataset. This dataset was constructed from the ImageNet dataset, contains nearly 90,000 images, and covers fifteen different clothing types including dresses, sweaters, undergarments, and uniforms. 
+         <audio src="audio/a6.m4a" type="audio/x-m4a" controls autoplay></audio>
+<p style = "text-align: left; font-size: 18px">Another model also uses pre-trained convolutional neural networks to classify apparel. This method of “using a pre-trained CNN model for either fine-tuning a CNN model with a new task, or using the layers activations of pre-trained CNN model for potential feature extraction” is known as transfer learning <a href="references.html">[5]</a>. The CNNs used include AlexNet, VGGNet, and ResNet, which were all trained on the ACS fashion dataset. This dataset was constructed from the ImageNet dataset, which contains nearly 90,000 images, and covers fifteen different clothing types including dresses, sweaters, undergarments, and uniforms. 
 </p>
 
 <p>
@@ -99,7 +102,7 @@
 <p style = "font-color:light-gray; font-size: 10px">Source: https://ieeexplore-ieee-org.proxylib.csueastbay.edu/document/8875916</p>
 <br>
 
-<p style = "text-align: left; font-size: 18px">About 80% of these images were assigned to the training set while the other 20% were assigned to the test set. Deep features were extracted, “fc6 and fc7 activations were used for AlexNet and VGGNet models and fc1000 activation layer was used for ResNet model” <a href="references.html">[5]</a>. Each deep feature vector was evaluated and the proposed model achieved the highest accuracy percentage, as shown below.
+<p style = "text-align: left; font-size: 18px">About 80% of these images were assigned to the training set while the other 20% were assigned to the test set. Deep features were extracted; “fc6 and fc7 activations were used for AlexNet and VGGNet models and fc1000 activation layer was used for ResNet model” <a href="references.html">[5]</a>. Each deep feature vector was evaluated and the proposed model achieved the highest accuracy percentage, as shown below.
 </p>
 
 <img src = "image/vector_accuracy.png" alt = "Accuracy of different vectors" style = "width:350px; height:300px">
